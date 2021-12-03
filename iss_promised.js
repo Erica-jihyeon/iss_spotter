@@ -2,9 +2,10 @@ const request = require('request-promise-native');
 
 
 const fetchMyIp = () => {
-  //request() return promise object -> fetchMyIp equal to promise object
+  //request() return promise object that has IP data with JSON string format
   return request('https://api.ipify.org?format=json');
 }
+//
 
 const fetchCoordsByIP = function(body) {
   const ip = JSON.parse(body).ip;
@@ -18,6 +19,7 @@ const fetchISSFlyOverTimes = function(body) {
 
 const nextISSTimesForMyLocation = function() {
   return fetchMyIp()
+  //then() inside -> callback func
     .then(fetchCoordsByIP)
     .then(fetchISSFlyOverTimes)
     .then((data) => {
