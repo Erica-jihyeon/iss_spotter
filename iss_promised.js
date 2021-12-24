@@ -26,6 +26,9 @@ const nextISSTimesForMyLocation = function() {
       const { response } = JSON.parse(data);
       return response;
     })
+    .catch((error) => {
+      console.log("It didn't work: ", error.message);
+    })
 }
 
 module.exports = { fetchMyIp, fetchCoordsByIP, fetchISSFlyOverTimes, nextISSTimesForMyLocation };
